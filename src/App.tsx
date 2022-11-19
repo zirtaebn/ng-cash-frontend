@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
+// components 
+import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import UserAccount from './pages/UserAccount';
+import GetUserTransactions from './pages/GetUserTransactions';
+import GetOneUserTransaction from './pages/GetOneUserTransaction';
+import MakeTransaction from './pages/MakeTransaction';
+
+// styles
+import * as C from './App.styles'
+
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <C.Container>
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/login' element={<Login />}/>
+        <Route path='/signup' element={<Signup />}/>
+        <Route path='/:username' element={<UserAccount />}/>
+        <Route path='/:username/transactions' element={<GetUserTransactions />}/>
+        <Route path='/:username/transactions/:id' element={<GetOneUserTransaction />}/>
+        <Route path='/:username/transaction' element={<MakeTransaction />}/>
+      </Routes>      
+    </C.Container>
   );
 }
 
