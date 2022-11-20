@@ -9,5 +9,10 @@ export const useFormatter = () => ({
             currency: 'BRL'
 
         });
+    },
+
+    dateFormat: (date:string) => {
+
+        return new Date(date.replace(/-/g, '\/')).toLocaleDateString('pt-br', { year:'numeric', month:'short', day:'numeric'});
     }
 })
