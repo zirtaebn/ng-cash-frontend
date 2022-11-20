@@ -8,6 +8,7 @@ import UserAccount from './pages/UserAccount';
 import GetUserTransactions from './pages/GetUserTransactions';
 import GetOneUserTransaction from './pages/GetOneUserTransaction';
 import MakeTransaction from './pages/MakeTransaction';
+import NotFound from './pages/NotFound';
 
 // utilities
 import RequireAuth from './contexts/Auth/RequireAuth';
@@ -28,6 +29,7 @@ const App = () => {
         <Route path='/:username/transactions' element={<RequireAuth><GetUserTransactions /></RequireAuth>}/>
         <Route path='/:username/transactions/:id' element={<RequireAuth><GetOneUserTransaction /></RequireAuth>}/>
         <Route path='/:username/transaction' element={<RequireAuth><MakeTransaction /></RequireAuth>}/>
+        <Route path='*' element={<NotFound />} />
       </Routes>      
     </C.Container>
   );
