@@ -53,25 +53,6 @@ const GetUserTransactions = () => {
         setTransactions(transactionResponse?.userDebitedTransactions.reverse() as Transaction[]);
     };
 
-    const buttonsArray = [
-
-        {
-            onClick:handleTransactionsClick,
-            text:'transferências gerais',
-            clicked:true
-        },
-        {
-            onClick:handleCreditedTransactionsClick,
-            text:'transferências recebidas',
-            clicked:false
-        },
-        {
-            onClick:handleDebitedTransactionsClick,
-            text:'transferências enviadas',
-            clicked:false
-        },
-    ]
-
     if(!transactionResponse){
 
         return (
