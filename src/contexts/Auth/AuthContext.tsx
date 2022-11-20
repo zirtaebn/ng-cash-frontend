@@ -6,6 +6,7 @@ import { UserRequest } from '../../@types/UserRequest';
 
 export type AuthContextType = {
 
+    authenticated:boolean,
     handleSignup: ({ username, password } : UserRequest) => Promise<UserResponse>,
     handleLogin: ({ username, password } : UserRequest) => Promise<UserResponse>,
     handleLogout: () => void,

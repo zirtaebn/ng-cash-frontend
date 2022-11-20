@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // utilities
 import { AuthContext } from './AuthContext';
@@ -7,6 +7,7 @@ import { api, useApi } from '../../hooks/useApi';
 
 export const AuthProvider = ({ children } : { children:JSX.Element }) => {
 
+    const [authenticated, setAuthenticated] = useState(false);
     const apiHook = useApi();
 
     useEffect(() => {
@@ -16,6 +17,7 @@ export const AuthProvider = ({ children } : { children:JSX.Element }) => {
         if (token) {
 
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;  
+            setAuthenticated(true);
         }
         
     }, []);
@@ -35,6 +37,7 @@ export const AuthProvider = ({ children } : { children:JSX.Element }) => {
 
             localStorage.setItem('token', JSON.stringify(data.token));
             api.defaults.headers.Authorization = `Bearer ${data.token}`;
+            setAuthenticated(true);
         }
 
         return data;
@@ -43,6 +46,7 @@ export const AuthProvider = ({ children } : { children:JSX.Element }) => {
 
     const handleLogout = () => {
 
+        setAuthenticated(false);
         localStorage.removeItem('token');
         api.defaults.headers.Authorization = '';
     }
@@ -51,7 +55,7 @@ export const AuthProvider = ({ children } : { children:JSX.Element }) => {
 
     return(
 
-        <AuthContext.Provider value={{ handleSignup, handleLogin, handleLogout }}>
+        <AuthContext.Provider value={{ authenticated, handleSignup, handleLogin, handleLogout }}>
             {children}
         </AuthContext.Provider>
     )
