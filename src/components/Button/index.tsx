@@ -6,8 +6,8 @@ import * as C from './styles';
 type ButtonProps = {
 
     text:string,
-    redirect:string,
-    invert?:boolean
+    redirect?:string,
+    invert?:boolean, 
 }
 
 const Button = ({ text, redirect, invert }:ButtonProps) => {
