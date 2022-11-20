@@ -13,6 +13,7 @@ export const useFormatter = () => ({
 
     dateFormat: (date:string) => {
 
+        // eslint-disable-next-line
         return new Date(date.replace(/-/g, '\/')).toLocaleDateString('pt-br', { year:'numeric', month:'short', day:'numeric'});
     }
 })
