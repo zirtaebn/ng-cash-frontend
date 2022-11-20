@@ -146,7 +146,6 @@ Beatriz Sant'Anna - [@zirtaebn](https://twitter.com/zirtaebn) - zirtaebndev@gmai
 
 Link do projeto: [https://github.com/zirtaebn/ng-cash-frontend](https://github.com/zirtaebn/ng-cash-frontend)
 
-
 ## Reconhecimentos
 
 Recursos e bibliotecas úteis que utilizei no projeto.
