@@ -1,6 +1,7 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 // components
 import Button from '../../components/Button';
@@ -9,17 +10,20 @@ import Button from '../../components/Button';
 import { useApi } from '../../hooks/useApi';
 import { Account } from '../../@types/Account';
 import { useFormatter } from '../../hooks/useFormatter';
+import { AuthContext } from '../../contexts/Auth/AuthContext';
 
 // styles
 import * as C from './styles';
 
 const UserAccount = () => {
 
-    const { username } = useParams();
     const [ account, setAccount ] = useState<Account | null>(null);
     const [ showBalance, setShowBalance ] = useState(false);
+    const { handleLogout } = useContext(AuthContext);
     const api = useApi();
     const formatter = useFormatter();
+    const { username } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -36,13 +40,33 @@ const UserAccount = () => {
         // eslint-disable-next-line
     }, []);
 
-    if(!account?.userAccount.balance) {
+    const handleLogOutClick = async () => {
 
-        return <p style={{color:'#fff'}}>loading...</p>
+        handleLogout();
+        navigate('/');                        
+    }
+
+    if(!account) {
+
+        return (
+
+            <ClipLoader 
+                color='#fff'
+            />
+        )
     }
 
     return(
         <C.Container>
+
+            <C.Logout>
+                <button
+                    onClick={handleLogOutClick}
+                >
+                    logout
+                </button>
+            </C.Logout>
+
 
             <h1>@{username}</h1>
             <C.Balance>
@@ -73,13 +97,13 @@ const UserAccount = () => {
                 <Button 
 
                     redirect={`${username}/transaction`}
-                    text='tranferir'
+                    text='transferir'
                  />
 
                 <Button 
 
                     redirect={`${username}/transactions`}
-                    text='ver transações'
+                    text='ver transferências'
                 />
             </C.Buttons>
 

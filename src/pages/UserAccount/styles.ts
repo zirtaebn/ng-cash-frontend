@@ -16,6 +16,51 @@ export const Container = styled.main`
     }
 `
 
+export const Logout = styled.div`
+
+    position: fixed;
+    top:0px;
+    right:0;
+    width:100%;
+    display:flex;
+    justify-content:end;
+    padding:10px 15px 0 0;
+
+    button {
+        
+        border:none;
+        background-color:#fff;
+        padding:15px 25px;
+        color:#000;
+        cursor: pointer;
+        border-radius:8px;
+        font-size:15px;
+        font-weight:600;
+        width:10%;
+        transition: all .6s ease;
+        
+
+        &:hover {
+
+            opacity:.8;
+        }
+
+        
+        @media(max-width:768px){
+
+            width:25%;
+            
+        }
+
+        @media(max-width:425px){
+
+            width:45%;
+            
+        }
+    }
+
+`
+
 export const Balance = styled.div`
 
     background-color:#fff;
