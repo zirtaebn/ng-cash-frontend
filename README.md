@@ -4,7 +4,7 @@ Aplicação feita em um desafio técnico da NG.CASH: Estruturar uma aplicação 
     Desktop
   <img src="./public/screenshots/desktop.png" alt="screenshot" />
 </div>
-<div align="center"> 
+<div align="center">  
     <p>Mobile</p>
   <img src="./public/screenshots/mobile.png" alt="screenshot" />
 </div>
